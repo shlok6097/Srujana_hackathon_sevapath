@@ -25,11 +25,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="60dp"
-        android:text="Welcome\nBack"
-        android:textColor="@android:color/white"
-        android:textSize="40sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/aclonica"
         android:lineSpacingExtra="8dp"
+        android:text="Welcome\nBack"
+        android:textColor="@color/black"
+        android:textSize="38sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

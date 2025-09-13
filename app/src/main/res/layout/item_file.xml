@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:gravity="center_vertical">
+
+    <!-- File Preview -->
+    <ImageView
+        android:id="@+id/imgPreview"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_file" />
+
+    <!-- File Info -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingStart="12dp">
+
+        <TextView
+            android:id="@+id/txtFileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="File name"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtFileType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Image / PDF"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- Action Buttons -->
+    <ImageButton
+        android:id="@+id/btnView"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_view"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="View" />
+
+    <ImageButton
+        android:id="@+id/btnDownload"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_download"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Download" />
+
+    <ImageButton
+        android:id="@+id/btnDelete"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_delete"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Delete" />
+    <ImageButton
+        android:id="@+id/btnShare"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_share"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Share" />
+
+</LinearLayout>

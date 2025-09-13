@@ -23,7 +23,7 @@
         android:id="@+id/logo"
         android:layout_width="206dp"
         android:layout_height="146dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="315dp"
         android:contentDescription="App Logo"
         android:src="@drawable/logo"
         app:layout_constraintBottom_toTopOf="@id/appName"
@@ -37,13 +37,14 @@
         android:id="@+id/appName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/abril_fatface"
         android:text="Seva Path"
         android:textColor="@color/black"
         android:textSize="28sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/logo"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/logo" />
 
     <!-- Bottom Shape -->
     <View

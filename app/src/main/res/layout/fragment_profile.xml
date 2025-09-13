@@ -69,110 +69,20 @@
         app:layout_constraintStart_toStartOf="@id/user_name_text"
         app:layout_constraintTop_toBottomOf="@id/user_name_text" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/stats_card"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="8dp"
-        app:layout_constraintBottom_toBottomOf="@id/header_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header_background">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
-            android:weightSum="3">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="215"
-                    android:textColor="#1E293B"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Posts"
-                    android:textSize="13sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1.2K"
-                    android:textColor="#1E293B"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Followers"
-                    android:textSize="13sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="340"
-                    android:textColor="#1E293B"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Following"
-                    android:textSize="13sp" />
-            </LinearLayout>
-
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="80dp"
         android:orientation="vertical"
-        android:layout_marginTop="16dp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        app:layout_constraintTop_toBottomOf="@id/stats_card"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/user_handle_text">
 
-        <ScrollView
-            xmlns:android="http://schemas.android.com/apk/res/android"
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#F4F7FC">
@@ -192,36 +102,36 @@
                         android:id="@+id/edit_profile_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="12dp"
                         android:background="?attr/selectableItemBackground"
                         android:clickable="true"
-                        android:focusable="true">
+                        android:focusable="true"
+                        android:padding="12dp">
 
                         <ImageView
                             android:id="@+id/account_icon"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@drawable/ic_account_circle"
                             android:layout_centerVertical="true"
                             android:layout_marginEnd="16dp"
+                            android:src="@drawable/ic_account_circle"
                             app:tint="#475569" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Edit Profile"
-                            android:textSize="16sp"
-                            android:textColor="#1E293B"
+                            android:layout_centerVertical="true"
                             android:layout_toEndOf="@id/account_icon"
-                            android:layout_centerVertical="true"/>
+                            android:text="Edit Profile"
+                            android:textColor="#1E293B"
+                            android:textSize="16sp" />
 
                         <ImageView
                             android:id="@+id/chevron_edit_profile"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@drawable/ic_chevron_right"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
+                            android:src="@drawable/ic_chevron_right"
                             app:tint="#94A3B8" />
                     </RelativeLayout>
 
@@ -229,13 +139,13 @@
                         android:id="@+id/edit_profile_content"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="#F8FAFC"
                         android:orientation="vertical"
-                        android:visibility="gone"
                         android:paddingStart="52dp"
-                        android:paddingEnd="16dp"
                         android:paddingTop="8dp"
+                        android:paddingEnd="16dp"
                         android:paddingBottom="8dp"
-                        android:background="#F8FAFC">
+                        android:visibility="gone">
 
                         <EditText
                             android:id="@+id/et_name"
@@ -259,15 +169,15 @@
                             android:id="@+id/btn_save_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Save"
                             android:layout_gravity="end"
-                            android:layout_marginTop="8dp"/>
+                            android:layout_marginTop="8dp"
+                            android:text="Save" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#E2E8F0"/>
+                        android:background="#E2E8F0" />
                 </LinearLayout>
 
                 <!-- ================== Notifications ================== -->
@@ -280,36 +190,36 @@
                         android:id="@+id/notifications_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="12dp"
                         android:background="?attr/selectableItemBackground"
                         android:clickable="true"
-                        android:focusable="true">
+                        android:focusable="true"
+                        android:padding="12dp">
 
                         <ImageView
                             android:id="@+id/notifications_icon"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@drawable/ic_notifications"
                             android:layout_centerVertical="true"
                             android:layout_marginEnd="16dp"
+                            android:src="@drawable/ic_notifications"
                             app:tint="#475569" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Notifications"
-                            android:textSize="16sp"
-                            android:textColor="#1E293B"
+                            android:layout_centerVertical="true"
                             android:layout_toEndOf="@id/notifications_icon"
-                            android:layout_centerVertical="true"/>
+                            android:text="Notifications"
+                            android:textColor="#1E293B"
+                            android:textSize="16sp" />
 
                         <ImageView
                             android:id="@+id/chevron_notifications"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@drawable/ic_chevron_right"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
+                            android:src="@drawable/ic_chevron_right"
                             app:tint="#94A3B8" />
                     </RelativeLayout>
 
@@ -317,25 +227,25 @@
                         android:id="@+id/notifications_content"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="#F8FAFC"
                         android:orientation="vertical"
-                        android:visibility="gone"
                         android:paddingStart="52dp"
-                        android:paddingEnd="16dp"
                         android:paddingTop="8dp"
+                        android:paddingEnd="16dp"
                         android:paddingBottom="8dp"
-                        android:background="#F8FAFC">
+                        android:visibility="gone">
 
                         <Switch
                             android:id="@+id/switch_notifications"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Enable Notifications"/>
+                            android:text="Enable Notifications" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#E2E8F0"/>
+                        android:background="#E2E8F0" />
                 </LinearLayout>
 
                 <!-- ================== Help & Support ================== -->
@@ -348,36 +258,36 @@
                         android:id="@+id/help_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="12dp"
                         android:background="?attr/selectableItemBackground"
                         android:clickable="true"
-                        android:focusable="true">
+                        android:focusable="true"
+                        android:padding="12dp">
 
                         <ImageView
                             android:id="@+id/help_icon"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@drawable/ic_help"
                             android:layout_centerVertical="true"
                             android:layout_marginEnd="16dp"
+                            android:src="@drawable/ic_help"
                             app:tint="#475569" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Help &amp; Support"
-                            android:textSize="16sp"
-                            android:textColor="#1E293B"
+                            android:layout_centerVertical="true"
                             android:layout_toEndOf="@id/help_icon"
-                            android:layout_centerVertical="true"/>
+                            android:text="Help &amp; Support"
+                            android:textColor="#1E293B"
+                            android:textSize="16sp" />
 
                         <ImageView
                             android:id="@+id/chevron_help"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@drawable/ic_chevron_right"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
+                            android:src="@drawable/ic_chevron_right"
                             app:tint="#94A3B8" />
                     </RelativeLayout>
 
@@ -385,25 +295,25 @@
                         android:id="@+id/help_content"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="#F8FAFC"
                         android:orientation="vertical"
-                        android:visibility="gone"
                         android:paddingStart="52dp"
-                        android:paddingEnd="16dp"
                         android:paddingTop="8dp"
+                        android:paddingEnd="16dp"
                         android:paddingBottom="8dp"
-                        android:background="#F8FAFC">
+                        android:visibility="gone">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Contact us at support@example.com"
-                            android:textColor="#1E293B"/>
+                            android:textColor="#1E293B" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#E2E8F0"/>
+                        android:background="#E2E8F0" />
                 </LinearLayout>
 
                 <!-- ================== Send Feedback ================== -->
@@ -416,36 +326,36 @@
                         android:id="@+id/feedback_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="12dp"
                         android:background="?attr/selectableItemBackground"
                         android:clickable="true"
-                        android:focusable="true">
+                        android:focusable="true"
+                        android:padding="12dp">
 
                         <ImageView
                             android:id="@+id/feedback_icon"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@drawable/ic_feedback"
                             android:layout_centerVertical="true"
                             android:layout_marginEnd="16dp"
+                            android:src="@drawable/ic_feedback"
                             app:tint="#475569" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Send Feedback"
-                            android:textSize="16sp"
-                            android:textColor="#1E293B"
+                            android:layout_centerVertical="true"
                             android:layout_toEndOf="@id/feedback_icon"
-                            android:layout_centerVertical="true"/>
+                            android:text="Send Feedback"
+                            android:textColor="#1E293B"
+                            android:textSize="16sp" />
 
                         <ImageView
                             android:id="@+id/chevron_feedback"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@drawable/ic_chevron_right"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
+                            android:src="@drawable/ic_chevron_right"
                             app:tint="#94A3B8" />
                     </RelativeLayout>
 
@@ -453,32 +363,33 @@
                         android:id="@+id/feedback_content"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="#F8FAFC"
                         android:orientation="vertical"
-                        android:visibility="gone"
                         android:paddingStart="52dp"
-                        android:paddingEnd="16dp"
                         android:paddingTop="8dp"
+                        android:paddingEnd="16dp"
                         android:paddingBottom="8dp"
-                        android:background="#F8FAFC">
+                        android:visibility="gone">
 
                         <EditText
                             android:id="@+id/et_feedback"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Write your feedback here"/>
+                            android:hint="Write your feedback here" />
+
                         <Button
                             android:id="@+id/btn_send_feedback"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Send"
                             android:layout_gravity="end"
-                            android:layout_marginTop="8dp"/>
+                            android:layout_marginTop="8dp"
+                            android:text="Send" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#E2E8F0"/>
+                        android:background="#E2E8F0" />
                 </LinearLayout>
 
                 <!-- ================== About Us ================== -->
@@ -491,36 +402,36 @@
                         android:id="@+id/about_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="12dp"
                         android:background="?attr/selectableItemBackground"
                         android:clickable="true"
-                        android:focusable="true">
+                        android:focusable="true"
+                        android:padding="12dp">
 
                         <ImageView
                             android:id="@+id/about_icon"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@drawable/ic_info"
                             android:layout_centerVertical="true"
                             android:layout_marginEnd="16dp"
+                            android:src="@drawable/ic_info"
                             app:tint="#475569" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="About Us"
-                            android:textSize="16sp"
-                            android:textColor="#1E293B"
+                            android:layout_centerVertical="true"
                             android:layout_toEndOf="@id/about_icon"
-                            android:layout_centerVertical="true"/>
+                            android:text="About Us"
+                            android:textColor="#1E293B"
+                            android:textSize="16sp" />
 
                         <ImageView
                             android:id="@+id/chevron_about"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@drawable/ic_chevron_right"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
+                            android:src="@drawable/ic_chevron_right"
                             app:tint="#94A3B8" />
                     </RelativeLayout>
 
@@ -528,25 +439,25 @@
                         android:id="@+id/about_content"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="#F8FAFC"
                         android:orientation="vertical"
-                        android:visibility="gone"
                         android:paddingStart="52dp"
-                        android:paddingEnd="16dp"
                         android:paddingTop="8dp"
+                        android:paddingEnd="16dp"
                         android:paddingBottom="8dp"
-                        android:background="#F8FAFC">
+                        android:visibility="gone">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="This is a demo app version 1.0.0"
-                            android:textColor="#1E293B"/>
+                            android:textColor="#1E293B" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#E2E8F0"/>
+                        android:background="#E2E8F0" />
                 </LinearLayout>
 
                 <!-- ================== App Version (static) ================== -->
@@ -559,28 +470,28 @@
                         android:id="@+id/version_icon"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_smartphone"
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="16dp"
+                        android:src="@drawable/ic_smartphone"
                         app:tint="#475569" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="App Version"
-                        android:textSize="16sp"
-                        android:textColor="#1E293B"
+                        android:layout_centerVertical="true"
                         android:layout_toEndOf="@id/version_icon"
-                        android:layout_centerVertical="true"/>
+                        android:text="App Version"
+                        android:textColor="#1E293B"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1.0.0"
-                        android:textSize="16sp"
-                        android:textColor="#64748B"
                         android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"/>
+                        android:layout_centerVertical="true"
+                        android:text="1.0.0"
+                        android:textColor="#64748B"
+                        android:textSize="16sp" />
                 </RelativeLayout>
 
             </LinearLayout>

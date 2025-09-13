@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Templet1"
+rootProject.name = "srujana"
 include(":app")
  
