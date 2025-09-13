@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home_"
+        android:title="Home"
+        android:icon="@drawable/home" />
+    <item
+        android:id="@+id/help"
+        android:title="Help"
+        android:icon="@drawable/help"/>
+    <item
+        android:id="@+id/chatbot"
+        android:title="ChatBot"
+        android:icon="@drawable/cyber"/>
+
+    <item
+        android:id="@+id/file"
+        android:title="Files"
+        android:icon="@drawable/floder"/>
+</menu>

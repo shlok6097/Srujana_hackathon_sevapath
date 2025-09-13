@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "541650251621",
+    "firebase_url": "https://suraksha-shield-53047-default-rtdb.firebaseio.com",
+    "project_id": "suraksha-shield-53047",
+    "storage_bucket": "suraksha-shield-53047.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:541650251621:android:a7e16328e95f663a1d7b8c",
+        "android_client_info": {
+          "package_name": "com.example.suraksha_shield"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgoSjGfesxO3LI0sq_Iv-c-Qx801NfYmM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:541650251621:android:7c6617d16f39194c1d7b8c",
+        "android_client_info": {
+          "package_name": "com.example.templet1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgoSjGfesxO3LI0sq_Iv-c-Qx801NfYmM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

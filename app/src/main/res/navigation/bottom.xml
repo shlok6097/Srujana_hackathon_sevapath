@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom"
+    app:startDestination="@id/home_">
+
+    <fragment
+        android:id="@+id/home_"
+        android:name="com.example.templet1.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home2_to_help2"
+            app:destination="@id/help" />
+    </fragment>
+    <fragment
+        android:id="@+id/file"
+        android:name="com.example.templet1.file"
+        android:label="fragment_file"
+        tools:layout="@layout/fragment_file" />
+    <fragment
+        android:id="@+id/chatbot"
+        android:name="com.example.templet1.chatbot"
+        android:label="fragment_chatbot"
+        tools:layout="@layout/fragment_chatbot" >
+        <action
+            android:id="@+id/action_chatbot_to_file"
+            app:destination="@id/file" />
+    </fragment>
+    <fragment
+        android:id="@+id/help"
+        android:name="com.example.templet1.help"
+        android:label="fragment_help"
+        tools:layout="@layout/fragment_help" >
+        <action
+            android:id="@+id/action_help2_to_chatbot"
+            app:destination="@id/chatbot" />
+    </fragment>
+</navigation>

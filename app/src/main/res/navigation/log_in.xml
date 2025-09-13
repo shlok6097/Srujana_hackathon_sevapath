@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/log_in"
+    app:startDestination="@id/sign_Up">
+
+    <dialog
+        android:id="@+id/sign_Up"
+        android:name="com.example.templet1.Sign_Up"
+        android:label="fragment_sign__up"
+        tools:layout="@layout/fragment_sign__up" >
+        <action
+            android:id="@+id/action_sign_Up_to_log_In"
+            app:destination="@id/log_In" />
+    </dialog>
+    <dialog
+        android:id="@+id/log_In"
+        android:name="com.example.templet1.Log_In"
+        android:label="Log_In" />
+</navigation>
