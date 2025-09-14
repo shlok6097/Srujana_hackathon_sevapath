@@ -21,7 +21,7 @@
         tools:layout="@layout/fragment_file" />
     <fragment
         android:id="@+id/chatbot"
-        android:name="com.example.templet1.chatbot"
+        android:name="com.example.formassistant.chatbot"
         android:label="fragment_chatbot"
         tools:layout="@layout/fragment_chatbot" >
         <action
