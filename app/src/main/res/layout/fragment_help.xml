@@ -1,118 +1,569 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4F7FC">
-
-    <TextView
-        android:id="@+id/title_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:text="Upload Files"
-        android:textColor="#1E293B"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/subtitle_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Choose a file type to upload"
-        android:textColor="#64748B"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@id/title_header"
-        app:layout_constraintTop_toBottomOf="@id/title_header" />
+    android:fillViewport="true"
+    android:background="#F5F5F5">
 
     <LinearLayout
-        android:id="@+id/upload_options_container"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/subtitle_header"
-        app:layout_constraintWidth_percent="0.9">
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_upload_image"
-            android:layout_width="0dp"
-            android:layout_height="140dp"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp">
+        <!-- Search Box -->
+        <EditText
+            android:id="@+id/etSearch"
+            android:hint="Search saved websites"
+            android:background="@drawable/rounded_edittext"
+            android:padding="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
+        <!-- Add Website Section -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:weightSum="3">
+
+            <ImageButton
+                android:id="@+id/btnSelectPhoto"
+                android:src="@android:drawable/ic_menu_camera"
+                android:background="@drawable/circle_button"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="Select Photo"
+                android:layout_marginEnd="8dp"/>
+
+            <EditText
+                android:id="@+id/etWebsiteName"
+                android:hint="Website Name"
+                android:background="@drawable/rounded_edittext"
+                android:padding="12dp"
+                android:layout_weight="1"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"/>
+
+            <EditText
+                android:id="@+id/etWebsiteUrl"
+                android:hint="URL"
+                android:background="@drawable/rounded_edittext"
+                android:padding="12dp"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/btnAddLink"
+                android:text="Add"
+                android:backgroundTint="#6200EE"
+                android:textColor="#FFFFFF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!-- RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvLinks"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginTop="16dp"
+            android:clipToPadding="false"
+            android:paddingBottom="8dp"/>
+
+        <!-- WebView ProgressBar -->
+        <ProgressBar
+            android:id="@+id/progressBarWeb"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:progressTint="#6200EE"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginTop="4dp"
+            android:visibility="gone"/>
+
+        <!-- WebView -->
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:visibility="gone"
+            android:background="#FFFFFF"/>
+        <!-- Useful Numbers Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Useful Numbers"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:id="@+id/llUsefulNumbers"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="?android:attr/dividerVertical"
+            android:showDividers="middle">
+
+            <!-- Example item -->
             <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/aadhar"
-                    app:tint="#4A90E2" />
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/childhelpline"
+                    android:contentDescription="Call Icon"
+                    android:layout_marginEnd="12dp"/>
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Child Helpline"
+                    android:textSize="16sp"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tvNumber"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="Image"
-                    android:textColor="#333333"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    android:layout_weight="1"
+                    android:text="1098"
+                    android:textSize="16sp"/>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_upload_pdf"
-            android:layout_width="0dp"
-            android:layout_height="140dp"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp">
+                <ImageButton
+                    android:id="@+id/btnCall"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:src="@android:drawable/ic_menu_call"
+                    android:contentDescription="Call Button"/>
+            </LinearLayout>
 
             <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
 
                 <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/ic_upload_pdf"
-                    app:tint="#D0021B" />
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/police"
+                    android:contentDescription="Call Icon"
+                    android:layout_marginEnd="12dp"/>
+                <TextView
+                    android:id="@+id/name1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Police Helpline"
+                    android:textSize="16sp"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tvNumber1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="PDF"
-                    android:textColor="#333333"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:layout_weight="1"
+                    android:text="100"
+                    android:textSize="16sp"/>
 
+                <ImageButton
+                    android:id="@+id/btnCall1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:src="@android:drawable/ic_menu_call"
+                    android:contentDescription="Call Button"/>
             </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ambulance"
+                    android:contentDescription="Call Icon"
+                    android:layout_marginEnd="12dp"/>
+                <TextView
+                    android:id="@+id/name2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Ambulance Helpline"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tvNumber2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="108"
+                    android:textSize="16sp"/>
+
+                <ImageButton
+                    android:id="@+id/btnCall2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:src="@android:drawable/ic_menu_call"
+                    android:contentDescription="Call Button"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/fire"
+                    android:contentDescription="Call Icon"
+                    android:layout_marginEnd="12dp"/>
+                <TextView
+                    android:id="@+id/name3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Fire Helpline"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tvNumber3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="101"
+                    android:textSize="16sp"/>
+
+                <ImageButton
+                    android:id="@+id/btnCall3"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:src="@android:drawable/ic_menu_call"
+                    android:contentDescription="Call Button"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/cybercrime"
+                    android:contentDescription="Call Icon"
+                    android:layout_marginEnd="12dp"/>
+                <TextView
+                    android:id="@+id/name4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Cyber Crime Helpline"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tvNumber4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1930"
+                    android:textSize="16sp"/>
+
+                <ImageButton
+                    android:id="@+id/btnCall4"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:src="@android:drawable/ic_menu_call"
+                    android:contentDescription="Call Button"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/road"
+                    android:contentDescription="Call Icon"
+                    android:layout_marginEnd="12dp"/>
+                <TextView
+                    android:id="@+id/name5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Road Accident Helpline"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tvNumber5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1073"
+                    android:textSize="16sp"/>
+
+                <ImageButton
+                    android:id="@+id/btnCall5"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:src="@android:drawable/ic_menu_call"
+                    android:contentDescription="Call Button"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/domestic"
+                    android:contentDescription="Call Icon"
+                    android:layout_marginEnd="12dp"/>
+                <TextView
+                    android:id="@+id/name6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Domestic Violence Helpline"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tvNumber6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="181"
+                    android:textSize="16sp"/>
+
+                <ImageButton
+                    android:id="@+id/btnCall6"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:src="@android:drawable/ic_menu_call"
+                    android:contentDescription="Call Button"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/raiway"
+                    android:contentDescription="Call Icon"
+                    android:layout_marginEnd="12dp"/>
+                <TextView
+                    android:id="@+id/name7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Railway Security Helpline"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tvNumber7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="139"
+                    android:textSize="16sp"/>
+
+                <ImageButton
+                    android:id="@+id/btnCall7"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:src="@android:drawable/ic_menu_call"
+                    android:contentDescription="Call Button"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/sbi"
+                    android:contentDescription="Call Icon"
+                    android:layout_marginEnd="12dp"/>
+                <TextView
+                    android:id="@+id/name8"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="State Bank of India Helpline"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tvNumber8"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="3800"
+                    android:textSize="16sp"/>
+
+                <ImageButton
+                    android:id="@+id/btnCall8"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:src="@android:drawable/ic_menu_call"
+                    android:contentDescription="Call Button"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/food"
+                    android:contentDescription="Call Icon"
+                    android:layout_marginEnd="12dp"/>
+                <TextView
+                    android:id="@+id/name9"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Food Safety Helpline"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tvNumber9"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1800112100"
+                    android:textSize="16sp"/>
+
+                <ImageButton
+                    android:id="@+id/btnCall9"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:src="@android:drawable/ic_menu_call"
+                    android:contentDescription="Call Button"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/pwd"
+                    android:contentDescription="Call Icon"
+                    android:layout_marginEnd="12dp"/>
+                <TextView
+                    android:id="@+id/name10"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="PWD Helpline"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tvNumber10"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="14456"
+                    android:textSize="16sp"/>
+
+                <ImageButton
+                    android:id="@+id/btnCall10"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:src="@android:drawable/ic_menu_call"
+                    android:contentDescription="Call Button"/>
+            </LinearLayout>
+            <!-- Add more items here in the same format -->
+        </LinearLayout>
 
     </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
