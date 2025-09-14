@@ -1,9 +1,13 @@
 package com.example.templet1
 
 data class FileModel(
-    val fileName: String = "",
-    val fileUrl: String = "",
-    val fileType: String = "",
-    val timestamp: Long = 0
+    var fileName: String? = null,
+    var fileUrl: String? = null,
+    var fileType: String? = null,
+    var timestamp: Long? = null,
+    var fullName: String? = null,
+    var username: String? = null,
+    var password: String? = null
 )
+
 
