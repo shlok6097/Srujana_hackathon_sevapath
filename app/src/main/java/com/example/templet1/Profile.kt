@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -20,6 +22,8 @@ class Profile : Fragment() {
     private lateinit var etName: EditText
     private lateinit var etEmail: EditText
     private lateinit var etPhone: EditText
+    private lateinit var etDob: EditText
+    private lateinit var tvProvider: TextView
     private lateinit var btnSave: Button
 
     private lateinit var auth: FirebaseAuth
@@ -38,13 +42,22 @@ class Profile : Fragment() {
         etName = view.findViewById(R.id.et_name)
         etEmail = view.findViewById(R.id.et_email)
         etPhone = view.findViewById(R.id.et_phone)
+        etDob = view.findViewById(R.id.et_dob) // Make sure to add this EditText in XML
+        tvProvider = view.findViewById(R.id.tv_provider) // TextView for provider
         btnSave = view.findViewById(R.id.btn_save_profile)
 
+        // Settings icon click
+        val settingsIcon: ImageView = view.findViewById(R.id.settings_icon)
+        settingsIcon.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.nav_host_fragment, SettingsFragment())
+                .addToBackStack(null)
+                .commit()
+        }
 
         // Initialize Firebase
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
-
         userId = auth.currentUser?.uid
 
         // Fetch user data
@@ -54,45 +67,35 @@ class Profile : Fragment() {
         btnSave.setOnClickListener {
             userId?.let { uid -> saveUserData(uid) }
         }
-        val settingsIcon: ImageView = view.findViewById(R.id.settings_icon)
-        settingsIcon.setOnClickListener {
-
-
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.nav_host_fragment, SettingsFragment())
-                .addToBackStack(null)
-                .commit()
-
-        }
-
-
 
         return view
     }
 
     private fun fetchUserData(uid: String) {
-        val userRef = firestore.collection("Users").document(uid)
+        val userRef = firestore.collection("users").document(uid) // use lowercase consistently
 
         userRef.get().addOnSuccessListener { document ->
             if (document.exists()) {
-                // Fill existing fields
                 etName.setText(document.getString("name") ?: "")
                 etEmail.setText(document.getString("email") ?: "")
                 etPhone.setText(document.getString("phone") ?: "")
-
-                // Check for missing fields and add them without overwriting existing ones
-                val updates = hashMapOf<String, Any>()
-                if (!document.contains("name")) updates["name"] = ""
-                if (!document.contains("email")) updates["email"] = auth.currentUser?.email ?: ""
-                if (!document.contains("phone")) updates["phone"] = ""
-
-                if (updates.isNotEmpty()) {
-                    userRef.update(updates)
-                }
-
             } else {
-                // Document does not exist at all → maybe warn or do nothing
-                Toast.makeText(requireContext(), "User document does not exist.", Toast.LENGTH_SHORT).show()
+
+                val defaultData = hashMapOf(
+                    "name" to auth.currentUser?.displayName.orEmpty(),
+                    "email" to auth.currentUser?.email.orEmpty(),
+                    "phone" to "",
+                    "dob" to "",
+                    "provider" to auth.currentUser?.providerData?.get(0)?.providerId.orEmpty(),
+                    "uid" to uid
+                )
+                userRef.set(defaultData).addOnSuccessListener {
+                    etName.setText(defaultData["name"] as String)
+                    etEmail.setText(defaultData["email"] as String)
+                    etPhone.setText(defaultData["phone"] as String)
+                }.addOnFailureListener { e ->
+                    Toast.makeText(requireContext(), "Error creating user: ${e.message}", Toast.LENGTH_LONG).show()
+                }
             }
         }.addOnFailureListener { e ->
             Toast.makeText(requireContext(), "Error fetching profile: ${e.message}", Toast.LENGTH_LONG).show()
@@ -104,8 +107,9 @@ class Profile : Fragment() {
         val name = etName.text.toString().trim()
         val email = etEmail.text.toString().trim()
         val phone = etPhone.text.toString().trim()
+        val dob = etDob.text.toString().trim()
 
-        // Simple validation
+        // Validation
         if (TextUtils.isEmpty(name)) {
             etName.error = "Name is required"
             return
@@ -116,17 +120,17 @@ class Profile : Fragment() {
         }
 
         val userRef = firestore.collection("users").document(uid)
-
         val updatedData = hashMapOf<String, Any>(
             "name" to name,
             "email" to email,
-            "phone" to phone
+            "mobile" to phone,
+            "dob" to dob
         )
 
         userRef.update(updatedData).addOnSuccessListener {
             Toast.makeText(requireContext(), "Profile updated", Toast.LENGTH_SHORT).show()
-        }.addOnFailureListener { e ->
-            // If document does not exist, create it
+        }.addOnFailureListener {
+            // If document doesn't exist, create it
             userRef.set(updatedData).addOnSuccessListener {
                 Toast.makeText(requireContext(), "Profile created", Toast.LENGTH_SHORT).show()
             }.addOnFailureListener { ex ->

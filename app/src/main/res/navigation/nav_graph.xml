@@ -17,5 +17,13 @@
     <fragment
         android:id="@+id/notification"
         android:name="com.example.templet1.Notification"
-        android:label="Notification" />
+        android:label="Notification" >
+        <action
+            android:id="@+id/action_notification_to_voiceFragment"
+            app:destination="@id/voiceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/voiceFragment"
+        android:name="com.example.templet1.VoiceFragment"
+        android:label="VoiceFragment" />
 </navigation>

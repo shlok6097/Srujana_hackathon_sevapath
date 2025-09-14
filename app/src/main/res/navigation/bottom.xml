@@ -14,20 +14,29 @@
             android:id="@+id/action_home2_to_help2"
             app:destination="@id/help" />
     </fragment>
+
     <fragment
         android:id="@+id/file"
         android:name="com.example.templet1.file"
         android:label="fragment_file"
         tools:layout="@layout/fragment_file" />
+
     <fragment
         android:id="@+id/chatbot"
         android:name="com.example.formassistant.chatbot"
         android:label="fragment_chatbot"
         tools:layout="@layout/fragment_chatbot" >
+
         <action
             android:id="@+id/action_chatbot_to_file"
             app:destination="@id/file" />
+
+        <!-- NEW: Action to VoiceFragment -->
+        <action
+            android:id="@+id/action_chatbot_to_voiceFragment"
+            app:destination="@id/voiceFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/help"
         android:name="com.example.templet1.help"
@@ -37,4 +46,12 @@
             android:id="@+id/action_help2_to_chatbot"
             app:destination="@id/chatbot" />
     </fragment>
+
+    <!-- NEW: Add VoiceFragment -->
+    <fragment
+        android:id="@+id/voiceFragment"
+        android:name="com.example.templet1.VoiceFragment"
+        android:label="VoiceFragment"
+        tools:layout="@layout/fragment_voice" />
+
 </navigation>

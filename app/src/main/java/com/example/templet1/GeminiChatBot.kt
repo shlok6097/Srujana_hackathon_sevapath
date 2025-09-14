@@ -10,14 +10,17 @@ import java.net.URLEncoder
 
 class AlphaGeeksChatBot {
 
-    private val apiKey = "AIzaSyAx1oMN_MIrB91rXE07sMM4MD6IVDBN0tY"
+    private val apiKey = "AIzaSyDYKjGaluBtBjZgBjTMGzT4wqggnArTp0o"
     private val model = GenerativeModel(modelName = "gemini-1.5-flash", apiKey = apiKey)
 
     suspend fun sendMessage(userMessage: String): ChatMessage = withContext(Dispatchers.IO) {
         try {
             val systemPrompt = """
-                You are Alpha Geeks ChatBot. 
-                Always respond professionally and provide links/images when relevant.
+            You are Jarvis ChatBot. 
+        Always respond professionally in the same language as the user. 
+        Provide step-by-step answers only if the user asks for procedure/steps. 
+        Always answer using your own knowledge (Shlok/Jarvis), 
+        do not use external Google or Gemini searches.ant.
             """.trimIndent()
 
             val lower = userMessage.lowercase()

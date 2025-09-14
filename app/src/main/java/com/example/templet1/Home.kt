@@ -73,9 +73,12 @@ class Home : Fragment(), OnMapReadyCallback {
 
         // --- Image slider logic ---
         val images = listOf(
-            R.drawable.aadhar,
-            R.drawable.ambulance,
-            R.drawable.fire
+            R.drawable.img4,
+            R.drawable.img5,
+            R.drawable.img3,
+            R.drawable.img7,
+            R.drawable.img6,
+            R.drawable.img1
         )
         val sliderAdapter = ImageSliderAdapter(images)
         binding.imageSlider.adapter = sliderAdapter
