@@ -2,29 +2,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
     <!-- Chat layout -->
     <LinearLayout
         android:id="@+id/chatLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="#F4F7FC">
+        android:background="@drawable/chat_gradient_bg"
+        android:padding="8dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/chatRecyclerView"
+        <TextView
+            android:id="@+id/chatBotName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alpha Geek"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:padding="8dp"
+            android:background="@drawable/chatbot_name_bg"
+            android:layout_gravity="center_horizontal"
+            android:elevation="2dp"/>
+
+        <!-- Chat messages with watermark -->
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="8dp"
-            android:clipToPadding="false"/>
+            android:layout_weight="1">
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/chatRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:padding="8dp"
+                android:scrollbars="vertical"/>
+
+            <!-- Transparent logo watermark -->
+            <ImageView
+                android:id="@+id/chatLogo"
+                android:layout_width="400dp"
+                android:layout_height="400dp"
+                android:layout_gravity="center"
+                android:alpha="0.3"
+                android:src="@drawable/logo"
+                android:contentDescription="Logo"/>
+        </FrameLayout>
+
+        <!-- Message input section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
             android:orientation="horizontal"
-            android:background="@android:color/white"
-            android:elevation="4dp">
+            android:background="@drawable/message_input_card"
+            android:padding="8dp"
+            android:elevation="4dp"
+            android:layout_marginTop="4dp">
 
             <EditText
                 android:id="@+id/userMessage"
@@ -32,9 +67,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="Type a message..."
-                android:background="@drawable/message_input_bg"
+                android:background="@android:color/transparent"
                 android:padding="12dp"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                android:inputType="textMultiLine"
+                android:maxLines="4"/>
 
             <ImageButton
                 android:id="@+id/sendButton"

@@ -68,15 +68,16 @@
         </LinearLayout>
 
         <!-- RecyclerView -->
+
+        <!-- WebView ProgressBar -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvLinks"
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:layout_marginTop="16dp"
             android:clipToPadding="false"
-            android:paddingBottom="8dp"/>
+            android:paddingBottom="8dp" />
 
-        <!-- WebView ProgressBar -->
         <ProgressBar
             android:id="@+id/progressBarWeb"
             style="?android:attr/progressBarStyleHorizontal"
@@ -113,46 +114,466 @@
 
             <!-- Example item -->
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="12dp"
-                android:gravity="center_vertical"
+                android:background="?attr/selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                android:background="?attr/selectableItemBackground">
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
 
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/childhelpline"
+                    android:layout_marginEnd="12dp"
                     android:contentDescription="Call Icon"
-                    android:layout_marginEnd="12dp"/>
+                    android:src="@drawable/childhelpline" />
+
                 <TextView
-                    android:id="@+id/name"
+                    android:id="@+id/name1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Child Helpline"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/tvNumber"
+                    android:id="@+id/tvNumber1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="1098"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
 
                 <ImageButton
-                    android:id="@+id/btnCall"
+                    android:id="@+id/btnCall1"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/circle_button"
-                    android:src="@android:drawable/ic_menu_call"
-                    android:contentDescription="Call Button"/>
+                    android:contentDescription="Call Button"
+                    android:src="@android:drawable/ic_menu_call" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="Call Icon"
+                    android:src="@drawable/police" />
+
+                <TextView
+                    android:id="@+id/name2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Police Helpline"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvNumber2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="100"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/btnCall2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:contentDescription="Call Button"
+                    android:src="@android:drawable/ic_menu_call" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="Call Icon"
+                    android:src="@drawable/ambulance" />
+
+                <TextView
+                    android:id="@+id/name3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Ambulance Helpline"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvNumber3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="108"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/btnCall3"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:contentDescription="Call Button"
+                    android:src="@android:drawable/ic_menu_call" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="Call Icon"
+                    android:src="@drawable/cybercrime" />
+
+                <TextView
+                    android:id="@+id/name4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Cyber Crime Helpline"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvNumber4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1930"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/btnCall4"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:contentDescription="Call Button"
+                    android:src="@android:drawable/ic_menu_call" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="Call Icon"
+                    android:src="@drawable/road" />
+
+                <TextView
+                    android:id="@+id/name5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Road accident Helpline"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvNumber5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1073"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/btnCall5"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:contentDescription="Call Button"
+                    android:src="@android:drawable/ic_menu_call" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="Call Icon"
+                    android:src="@drawable/pwd" />
+
+                <TextView
+                    android:id="@+id/name6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="PWD Helpline"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvNumber6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="14456"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/btnCall6"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:contentDescription="Call Button"
+                    android:src="@android:drawable/ic_menu_call" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="Call Icon"
+                    android:src="@drawable/raiway" />
+
+                <TextView
+                    android:id="@+id/name7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Railway Security Helpline"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvNumber7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="139"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/btnCall7"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:contentDescription="Call Button"
+                    android:src="@android:drawable/ic_menu_call" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="Call Icon"
+                    android:src="@drawable/fire" />
+
+                <TextView
+                    android:id="@+id/name8"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Fire Helpline"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvNumber8"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="112"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/btnCall8"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:contentDescription="Call Button"
+                    android:src="@android:drawable/ic_menu_call" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="Call Icon"
+                    android:src="@drawable/sbi" />
+
+                <TextView
+                    android:id="@+id/name9"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="State Bank of India Helpline"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvNumber9"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="3800"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/btnCall9"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:contentDescription="Call Button"
+                    android:src="@android:drawable/ic_menu_call" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="Call Icon"
+                    android:src="@drawable/food" />
+
+                <TextView
+                    android:id="@+id/name10"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Food Safety Helpline"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvNumber10"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1800112100"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/btnCall10"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:contentDescription="Call Button"
+                    android:src="@android:drawable/ic_menu_call" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="Call Icon"
+                    android:src="@drawable/domestic" />
+
+                <TextView
+                    android:id="@+id/name11"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Domestic Violence Helpline"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvNumber11"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="181"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/btnCall11"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:contentDescription="Call Button"
+                    android:src="@android:drawable/ic_menu_call" />
+            </LinearLayout>
             <!-- Add more items here in the same format -->
         </LinearLayout>
 

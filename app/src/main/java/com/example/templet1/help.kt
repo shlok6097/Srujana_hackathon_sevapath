@@ -24,6 +24,7 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.storage
 
+
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
@@ -45,9 +46,9 @@ class help : Fragment() {
     private lateinit var adapter: LinksAdapter
     private var allLinks = mutableListOf<LinkModel>()
 
-    // Useful numbers
-    private lateinit var btnCall1: ImageButton
-    private lateinit var tvNumber1: TextView
+    // Useful numbers arrays
+    private lateinit var btnCalls: List<ImageButton>
+    private lateinit var tvNumbers: List<TextView>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,14 +74,42 @@ class help : Fragment() {
         webView = view.findViewById(R.id.webView)
         progressBarWeb = view.findViewById(R.id.progressBarWeb)
 
-        // Useful numbers
-        btnCall1 = view.findViewById(R.id.btnCall)
-        tvNumber1 = view.findViewById(R.id.tvNumber)
+        // Initialize useful number buttons and textviews
+        btnCalls = listOf(
+            view.findViewById(R.id.btnCall1),
+            view.findViewById(R.id.btnCall2),
+            view.findViewById(R.id.btnCall3),
+            view.findViewById(R.id.btnCall4),
+            view.findViewById(R.id.btnCall5),
+            view.findViewById(R.id.btnCall6),
+            view.findViewById(R.id.btnCall7),
+            view.findViewById(R.id.btnCall8),
+            view.findViewById(R.id.btnCall9),
+            view.findViewById(R.id.btnCall10),
+            view.findViewById(R.id.btnCall11)
+        )
 
-        btnCall1.setOnClickListener {
-            val intent = Intent(Intent.ACTION_DIAL)
-            intent.data = Uri.parse("tel:${tvNumber1.text}")
-            startActivity(intent)
+        tvNumbers = listOf(
+            view.findViewById(R.id.tvNumber1),
+            view.findViewById(R.id.tvNumber2),
+            view.findViewById(R.id.tvNumber3),
+            view.findViewById(R.id.tvNumber4),
+            view.findViewById(R.id.tvNumber5),
+            view.findViewById(R.id.tvNumber6),
+            view.findViewById(R.id.tvNumber7),
+            view.findViewById(R.id.tvNumber8),
+            view.findViewById(R.id.tvNumber9),
+            view.findViewById(R.id.tvNumber10),
+            view.findViewById(R.id.tvNumber11)
+        )
+
+        // Set click listeners for all buttons
+        for (i in btnCalls.indices) {
+            btnCalls[i].setOnClickListener {
+                val intent = Intent(Intent.ACTION_DIAL)
+                intent.data = Uri.parse("tel:${tvNumbers[i].text}")
+                startActivity(intent)
+            }
         }
 
         // WebView setup
@@ -94,13 +123,12 @@ class help : Fragment() {
                 progressBarWeb.visibility = View.VISIBLE
             }
         }
-        webView.webChromeClient = WebChromeClient() // optional: for loading progress
+        webView.webChromeClient = WebChromeClient()
         webView.visibility = View.GONE
         progressBarWeb.visibility = View.GONE
 
-        // Adapter setup with full-screen WebView click
+        // Adapter setup
         adapter = LinksAdapter(emptyList()) { url ->
-            // Hide all other views
             etSearch.visibility = View.GONE
             etWebsiteName.visibility = View.GONE
             etWebsiteUrl.visibility = View.GONE
@@ -109,7 +137,6 @@ class help : Fragment() {
             rvLinks.visibility = View.GONE
             progressBarWeb.visibility = View.VISIBLE
             webView.visibility = View.VISIBLE
-
             webView.loadUrl(url)
         }
 
@@ -147,8 +174,6 @@ class help : Fragment() {
             } else if (webView.visibility == View.VISIBLE) {
                 webView.visibility = View.GONE
                 progressBarWeb.visibility = View.GONE
-
-                // Show all other views again
                 etSearch.visibility = View.VISIBLE
                 etWebsiteName.visibility = View.VISIBLE
                 etWebsiteUrl.visibility = View.VISIBLE
@@ -215,12 +240,8 @@ class help : Fragment() {
             .add(linkData)
             .addOnSuccessListener { docRef ->
                 Toast.makeText(requireContext(), "Link added", Toast.LENGTH_SHORT).show()
-
-                // Add immediately to adapter
                 allLinks.add(0, LinkModel(docRef.id, websiteName, url, photoUrl))
                 adapter.updateData(allLinks)
-
-
             }
     }
 
