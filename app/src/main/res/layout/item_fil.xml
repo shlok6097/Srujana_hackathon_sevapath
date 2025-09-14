@@ -1,0 +1,47 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/tvFileName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="#1E293B"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/btnView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_view"
+        android:contentDescription="View"
+        android:visibility="visible"/>
+
+    <ImageView
+        android:id="@+id/btnDelete"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_delete"
+        android:contentDescription="Delete"
+        android:visibility="visible"/>
+
+    <ImageView
+        android:id="@+id/btnDownload"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_download"
+        android:contentDescription="Download"
+        android:visibility="visible"/>
+
+    <ImageView
+        android:id="@+id/btnShare"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_share"
+        android:contentDescription="Share"
+        android:visibility="visible"/>
+</LinearLayout>

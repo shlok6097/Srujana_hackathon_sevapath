@@ -7,4 +7,9 @@
     <color name="tech_light_gray">#9CA3AF</color>
     <color name="tech_indigo">#6366F1</color>
     <color name="tech_pink">#EC4899</color>
+    <color name="primaryColor">#3F51B5</color>
+    <color name="primaryLight">#C5CAE9</color>
+    <color name="primaryDark">#303F9F</color>
+    <color name="accentColor">#FF4081</color>
+
 </resources>

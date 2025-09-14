@@ -41,8 +41,9 @@
             android:id="@+id/appSubtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="You Trust and We Protect You"
-            android:textSize="16sp"
+            android:text="Serve With Heart Shine With Seva"
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:textColor="#0B0B0B"
             android:layout_marginTop="4dp"/>
     </LinearLayout>

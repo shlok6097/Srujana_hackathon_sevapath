@@ -1,0 +1,10 @@
+<com.google.android.material.imageview.ShapeableImageView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sliderImage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scaleType="centerCrop"
+    app:shapeAppearanceOverlay="@style/RoundedImage"
+    android:layout_margin="0dp"
+    android:padding="0dp"/>
