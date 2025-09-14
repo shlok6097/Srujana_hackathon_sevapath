@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.templet1.R
 import com.bumptech.glide.Glide
 
 class ChatAdapter(private val messages: MutableList<ChatMessage>) :
@@ -17,86 +17,78 @@ class ChatAdapter(private val messages: MutableList<ChatMessage>) :
     private val USER = 0
     private val BOT = 1
 
-    override fun getItemViewType(position: Int): Int {
-        return if (messages[position].isUser) USER else BOT
-    }
+    override fun getItemViewType(position: Int) = if (messages[position].isUser) USER else BOT
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
         return if (viewType == USER) {
-            val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_message_user, parent, false)
-            UserViewHolder(view)
+            UserViewHolder(inflater.inflate(R.layout.item_message_user, parent, false))
         } else {
-            val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_message_bot, parent, false)
-            BotViewHolder(view)
+            BotViewHolder(inflater.inflate(R.layout.item_message_bot, parent, false))
         }
     }
 
+    override fun getItemCount() = messages.size
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val message = messages[position]
+        val msg = messages[position]
 
-        when (message.type) {
-            MessageType.TEXT -> {
-                if (holder is UserViewHolder) holder.message.text = message.text
-                if (holder is BotViewHolder) holder.message.text = message.text
-            }
+        if (holder is UserViewHolder) {
+            holder.message.text = msg.text
+        }
 
-            MessageType.LINK -> {
-                if (holder is BotViewHolder) {
-                    holder.message.text = message.text
+        if (holder is BotViewHolder) {
+            holder.message.visibility = View.VISIBLE
+            holder.image.visibility = View.GONE
+
+            when (msg.type) {
+                MessageType.TEXT -> holder.message.text = msg.text
+                MessageType.LINK -> {
+                    holder.message.text = msg.text
                     holder.message.setOnClickListener {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(message.text))
-                        holder.itemView.context.startActivity(intent)
+                        try {
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(msg.text))
+                            holder.itemView.context.startActivity(intent)
+                        } catch (e: Exception) {
+                            Toast.makeText(holder.itemView.context, "Invalid URL", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
-            }
-
-            MessageType.IMAGE -> {
-                if (holder is BotViewHolder) {
+                MessageType.IMAGE -> {
                     holder.message.visibility = View.GONE
                     holder.image.visibility = View.VISIBLE
                     Glide.with(holder.itemView.context)
-                        .load(message.text) // URL of image
+                        .load(msg.text)
                         .into(holder.image)
                 }
-            }
-
-            MessageType.VIDEO -> {
-                if (holder is BotViewHolder) {
-                    holder.message.text = "Video: Tap to play"
+                MessageType.VIDEO, MessageType.INFOGRAPHIC -> {
+                    holder.message.text = "Tap to view"
                     holder.message.setOnClickListener {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(message.text))
-                        holder.itemView.context.startActivity(intent)
-                    }
-                }
-            }
-
-            MessageType.INFOGRAPHIC -> {
-                if (holder is BotViewHolder) {
-                    holder.message.text = "Infographic: Tap to view"
-                    holder.message.setOnClickListener {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(message.text))
-                        holder.itemView.context.startActivity(intent)
+                        try {
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(msg.text))
+                            holder.itemView.context.startActivity(intent)
+                        } catch (e: Exception) {
+                            Toast.makeText(holder.itemView.context, "Invalid URL", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
             }
         }
     }
 
-    override fun getItemCount(): Int = messages.size
-
-    fun addMessage(message: ChatMessage) {
+    fun addMessage(message: ChatMessage, recyclerView: RecyclerView) {
         messages.add(message)
         notifyItemInserted(messages.size - 1)
+        recyclerView.scrollToPosition(messages.size - 1)
     }
 
     inner class UserViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val message: TextView = view.findViewById(R.id.messageText)
+        // Removed image to prevent crash
     }
 
     inner class BotViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val message: TextView = view.findViewById(R.id.messageText)
-        val image: ImageView = view.findViewById(R.id.messageImage) // make sure your XML has ImageView with this id
+        val image: ImageView = view.findViewById(R.id.messageImage)
     }
 }

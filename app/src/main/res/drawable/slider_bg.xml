@@ -1,0 +1,6 @@
+<!-- res/drawable/slider_bg.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#EEEEEE"/> <!-- Light gray background -->
+    <corners android:radius="12dp"/> <!-- Rounded corners -->
+</shape>
