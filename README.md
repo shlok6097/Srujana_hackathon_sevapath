@@ -94,11 +94,16 @@ To save setup time, you can log in using these demo accounts:
 
 ## 📸 Screenshots
 
-_Add your app screenshots here for quick preview (Home, Help, Chatbot, Profile)._  
-Example placeholders:  
-- ![Home Fragment](./screenshots/home.png)  
-- ![Jarvis Chatbot](./screenshots/chatbot.png)  
-- ![Profile](./screenshots/profile.png)  
+## 📸 Screenshots
+
+### 🔐 Login & Security
+![Login](https://drive.google.com/file/d/1cTCBJ494_-GcspmbsfpdQGs4U-xdoOD2/view?usp=drivesdk)
+
+### 📰 Home Fragment
+![News](https://drive.google.com/file/d/18RWv2sidJks-fUZ_06nyrSApgx72reRW/view?usp=drivesdk)
+
+### 🤖 Chatbot (Jarvis)
+![Chatbot](https://drive.google.com/file/d/1ie_a4btjxNwqoP1_eiYIme0BNyTau7Tb/view?usp=drivesdk)
 
 ---
 
