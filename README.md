@@ -6,7 +6,7 @@ An **AI-powered, secure, multi-utility Android app** that keeps you safe, inform
 
 ## 🎥 Demo
 - 📱 [APK Download](./app-debug.apk)  
-- 🎬 [Demo Video](your_video_link_here)  
+- 🎬 [Demo Video](https://drive.google.com/drive/folders/1E175BOW-2tFS7iHuJ_Itq1i-zOrHx6iE)  
 
 ---
 
